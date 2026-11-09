@@ -1,9 +1,8 @@
-const { getDefaultConfig, mergeConfig } = require('@react-native/metro-config');
+const { getDefaultConfig } = require('expo/metro-config');
 
-const config = {
-  resolver: {
-    assetExts: ['wav', 'mp3', 'm4a', 'ttf', 'otf'],
-  },
-};
+const config = getDefaultConfig(__dirname);
 
-module.exports = mergeConfig(getDefaultConfig(__dirname), config);
+// Conserver vos extensions personnalisées
+config.resolver.assetExts.push('wav', 'mp3', 'm4a', 'ttf', 'otf');
+
+module.exports = config;
